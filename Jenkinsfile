@@ -23,7 +23,13 @@ pipeline {
         stage('Tests') {
             steps {
                 catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
-                    sh '.venv/bin/python -m pytest -v --junitxml=reports/junit.xml --cov=app --cov-report=xml:reports/coverage.xml --cov-report=term-missing'
+                    sh '''
+                        .venv/bin/python -m pytest -v \
+                            --junitxml=reports/junit.xml \
+                            --cov=app \
+                            --cov-report=xml:reports/coverage.xml \
+                            --cov-report=term-missing
+                    '''
                 }
             }
             post {
