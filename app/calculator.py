@@ -13,7 +13,7 @@ def multiply(a, b):
 def divide(a, b):
     if b == 0:
         raise ValueError("Division par zéro impossible")
-    return a / b
+    return a // b
 
 
 def percentage(value, percent):
